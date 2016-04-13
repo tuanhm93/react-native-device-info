@@ -67,6 +67,12 @@ public class MainActivity extends ReactActivity {
 <uses-permission android:name="android.permission.BLUETOOTH"/>
 ```
 
+* If you want to get the sim info in Android add this to your AndroidManifest.xml (optional)
+```xml
+<uses-permission android:name="android.permission.SIM_STATE_READY" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+```
+
 ## Release Notes
 
  * 0.9.1 adds support for the iPhone SE and new iPad Pro

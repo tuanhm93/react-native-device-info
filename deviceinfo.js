@@ -47,4 +47,27 @@ module.exports = {
   getDeviceCountry: function() {
     return RNDeviceInfo.deviceCountry;
   },
+
+  getNetworkCountryIso: function() {
+    return RNDeviceInfo.networkCountryIso;
+  },
+  getNetworkOperator: function() {
+    return RNDeviceInfo.networkOperator;
+  },
+  getNetworkOperatorName: function() {
+    return RNDeviceInfo.networkOperatorName;
+  },
+
+  getSimOperator: function() {
+    return RNDeviceInfo.simOperator;
+  },
+  getSimOperatorName: function() {
+    return RNDeviceInfo.simOperatorName;
+  },
+  getSimSerialNumber: function() {
+    return RNDeviceInfo.simSerialNumber;
+  },
+
+
+
 };

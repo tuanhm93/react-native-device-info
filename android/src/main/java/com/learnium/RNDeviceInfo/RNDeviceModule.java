@@ -1,10 +1,11 @@
 package com.learnium.RNDeviceInfo;
 
-import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -87,6 +88,22 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     constants.put("systemManufacturer", Build.MANUFACTURER);
     constants.put("bundleId", packageName);
     constants.put("userAgent", System.getProperty("http.agent"));
+
+
+      TelephonyManager telephony = (TelephonyManager) reactContext.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+
+      constants.put("networkCountryIso", telephony.getNetworkCountryIso());
+      constants.put("networkOperator", telephony.getNetworkOperator());
+      constants.put("networkOperatorName", telephony.getNetworkOperatorName());
+
+      try {
+          constants.put("simOperator", telephony.getSimOperator());
+          constants.put("simOperatorName", telephony.getSimOperatorName());
+          constants.put("simSerialNumber", telephony.getSimSerialNumber());
+      }
+      catch(Exception e){
+          e.printStackTrace();
+      }
     return constants;
   }
 }
