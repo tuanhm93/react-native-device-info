@@ -1,3 +1,7 @@
+## MAINTAINERS WANTED!
+
+Unfortunately, I don't have the time to continue maintaining this module. If you would like to take over, please open an issue or get in touch with me (@rebeccahughes).
+
 ## react-native-device-info
 
 [![npm version](https://badge.fury.io/js/react-native-device-info@2x.png)](http://badge.fury.io/js/react-native-device-info)
@@ -13,6 +17,15 @@ npm install react-native-device-info --save
 ```
 
 ### Installation (iOS)
+
+#### Installing via Cocoa Pods
+Add the following line to your build targets in your `Podfile`
+
+`pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'`
+
+Then run `pod install`
+
+#### Installing manually
 
 In XCode, in the project navigator:
 - Right click Libraries

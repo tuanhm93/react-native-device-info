@@ -58,6 +58,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     String packageName = this.reactContext.getPackageName();
 
     constants.put("appVersion", "not available");
+    constants.put("buildVersion", "not available");
     constants.put("buildNumber", 0);
 
     try {
