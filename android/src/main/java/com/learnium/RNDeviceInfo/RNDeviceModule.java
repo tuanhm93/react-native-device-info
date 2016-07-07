@@ -7,6 +7,8 @@ import android.os.Build;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 
+import com.google.android.gms.iid.InstanceID;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 
@@ -78,6 +80,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
       // e.printStackTrace();
     // }
 
+    constants.put("instanceId", InstanceID.getInstance(this.reactContext).getId());
     constants.put("deviceName", deviceName);
     constants.put("systemName", "Android");
     constants.put("systemVersion", Build.VERSION.RELEASE);
@@ -98,7 +101,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
       constants.put("networkOperatorName", telephony.getNetworkOperatorName());
 
       try {
-          constants.put("simOperator", telephony.getSimOperator());
+    	  constants.put("timezone", TimeZone.getDefault().getID());
           constants.put("simOperatorName", telephony.getSimOperatorName());
           constants.put("simSerialNumber", telephony.getSimSerialNumber());
       }

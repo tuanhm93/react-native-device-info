@@ -1,12 +1,16 @@
-## MAINTAINERS WANTED!
-
-Unfortunately, I don't have the time to continue maintaining this module. If you would like to take over, please open an issue or get in touch with me (@rebeccahughes).
-
 ## react-native-device-info
 
 [![npm version](https://badge.fury.io/js/react-native-device-info@2x.png)](http://badge.fury.io/js/react-native-device-info)
 
 Device Information for react-native
+
+## Installation via [`rnpm`](https://github.com/rnpm/rnpm)
+
+```shell
+rnpm install react-native-device-info
+```
+
+`rnpm` will install (--save) this module then linking for react-native, so you don't have to link for each platforms maually as the following.
 
 ## Installation
 
@@ -131,4 +135,6 @@ console.log("User Agent", DeviceInfo.getUserAgent()); // e.g. Dalvik/2.1.0 (Linu
 console.log("Device Locale", DeviceInfo.getDeviceLocale()); // e.g en-US
 
 console.log("Device Country", DeviceInfo.getDeviceCountry()); // e.g US
+
+console.log("App Instance ID", DeviceInfo.getInstanceID()); // ANDROID ONLY - see https://developers.google.com/instance-id/
 ```
