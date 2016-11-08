@@ -14,6 +14,9 @@ module.exports = {
   getDeviceId: function () {
     return RNDeviceInfo.deviceId;
   },
+  getMyUniqueId: function() {
+    return RNDeviceInfo.myUniqueId;
+  },
   getManufacturer: function () {
     return RNDeviceInfo.systemManufacturer;
   },

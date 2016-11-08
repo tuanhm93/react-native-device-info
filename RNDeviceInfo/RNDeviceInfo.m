@@ -8,6 +8,8 @@
 
 #import "RNDeviceInfo.h"
 #import "DeviceUID.h"
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 
 @interface RNDeviceInfo()
 
@@ -148,12 +150,32 @@ RCT_EXPORT_MODULE()
   return currentTimeZone.name;
 }
 
+- (NSString*) getUniqueId {
+    NSString *appName=[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
+    
+    NSString *strApplicationUUID = [SAMKeychain passwordForService:appName account:@"incoding"];
+    if (strApplicationUUID == nil)
+    {
+        strApplicationUUID  = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        [SAMKeychain setPassword:strApplicationUUID forService:appName account:@"incoding"];
+    }
+    
+
+    return strApplicationUUID;
+}
+
 - (NSDictionary *)constantsToExport
 {
     UIDevice *currentDevice = [UIDevice currentDevice];
 
     NSUUID *identifierForVendor = [currentDevice identifierForVendor];
     NSString *uniqueId = [DeviceUID uid];
+
+    CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
+    CTCarrier *carrier = [netinfo subscriberCellularProvider];
+    NSString *simOperatorName = (carrier.carrierName == NULL) ? @"" : carrier.carrierName;
+
+    NSString *myUniqueId= [self getUniqueId];
 
     return @{
              @"systemName": currentDevice.systemName,
@@ -170,6 +192,8 @@ RCT_EXPORT_MODULE()
              @"systemManufacturer": @"Apple",
              @"userAgent": self.userAgent,
              @"timezone": self.timezone,
+             @"simOperatorName": simOperatorName,
+             @"myUniqueId": myUniqueId,
              };
 }
 
