@@ -10,6 +10,7 @@
 #import "DeviceUID.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import "SAMKeychain.h"
 
 @interface RNDeviceInfo()
 
